@@ -2,6 +2,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
+const PORT = process.env.PORT || 3000; // <- важно для Heroku
+
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
     const filePath = path.join(__dirname, "a.html");
@@ -20,7 +22,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Сервер запущен: http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
